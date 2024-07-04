@@ -10,17 +10,17 @@ export class ListComponent {
 
 @Input()  
 public characterList:Character[]=[{
+  id:'',
   name: '',
   power: 0
 }]
 
 @Output()
-public onDeleteId:EventEmitter<number>=new EventEmitter();
+public onDeleteId:EventEmitter<string>=new EventEmitter();
 
-onDeleteCharacter(index:number):void {
-
-  this.onDeleteId.emit(index);
- 
+onDeleteCharacter(id:number):void {
+  const {id:uuid}= this.characterList[id];
+  this.onDeleteId.emit(uuid);
 }
 
 
